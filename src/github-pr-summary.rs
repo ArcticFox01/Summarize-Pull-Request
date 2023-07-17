@@ -174,6 +174,13 @@ async fn handler(
             model: MODEL,
             restart: true,
             system_prompt: Some(system),
+            max_tokens: None,
+            temperature: None,
+            top_p: None,
+            stop: None,
+            presence_penalty: None,
+            frequency_penalty: None,
+            logit_bias: None
         };
         let question = "The following is a GitHub patch. Please summarize the key changes and identify potential problems. Start with the most important findings.\n\n".to_string() + truncate(commit, CHAR_SOFT_LIMIT);
         match openai.chat_completion(&chat_id, &question, &co).await {
@@ -204,6 +211,13 @@ async fn handler(
             model: MODEL,
             restart: true,
             system_prompt: Some(system),
+            max_tokens: None,
+            temperature: None,
+            top_p: None,
+            stop: None,
+            presence_penalty: None,
+            frequency_penalty: None,
+            logit_bias: None
         };
         let question = "Here is a set of summaries for software source code patches. Each summary starts with a ------ line. Please write an overall summary considering all the individual summary. Please present the potential issues and errors first, following by the most important findings, in your summary.\n\n".to_string() + &reviews_text;
         match openai.chat_completion(&chat_id, &question, &co).await {
